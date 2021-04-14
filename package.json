@@ -1,6 +1,6 @@
 {
   "name": "tiktok-scraper-without-watermark",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "Tiktok Scraper",
   "main": "index.js",
   "scripts": {
@@ -8,26 +8,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MRHRTZ/Tiktok%20Scraper%20Without%20Watermark.git"
+    "url": "git+https://github.com/MRHRTZ/Tiktok-Scraper-Without-Watermark.git"
   },
   "keywords": [
-    "Tiktok",
-    "Downloader",
-    "Tiktok",
-    "Scraper",
-    "Tiktok",
-    "No",
-    "WM",
-    "Tiktok",
-    "No",
-    "Watermark"
+    "Tiktok Downloader",
+    "Tiktok Scraper",
+    "Tiktok No WM",
+    "Tiktok No Watermark"
   ],
   "author": "MRHRTZ",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MRHRTZ/Tiktok%20Scraper%20Without%20Watermark/issues"
+    "url": "https://github.com/MRHRTZ/Tiktok-Scraper-Without-Watermark/issues"
   },
-  "homepage": "https://github.com/MRHRTZ/Tiktok%20Scraper%20Without%20Watermark#readme",
+  "homepage": "https://github.com/MRHRTZ/Tiktok-Scraper-Without-Watermark#readme",
   "dependencies": {
     "axios": "^0.21.1",
     "cheerio": "^1.0.0-rc.6",
