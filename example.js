@@ -9,7 +9,7 @@ tiktok.ssstik(url)
      .catch(e => console.log(e))
 
 
-// tiktok.snaptik(url)
+// tiktok.musicallydown(url)
 //      .then(result => {
 //           console.log(result)
 //      })

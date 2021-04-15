@@ -38,12 +38,11 @@ function ssstik(url) {
                     }
                     Axios.post(BASEurl + urlPost, qs.stringify(config.dataPost), { headers: config.headers })
                          .then(({ data }) => {
-                              // console.log(data)
+                              // return console.log(data)
                               const $ = cheerio.load(data)
                               const result = {
                                    status: true,
-                                   text: $('div > p.maintext').text(),
-                                   pic: $('div > img').attr('src'),
+                                   text: $('div > p').text(),
                                    videonowm: BASEurl + $('div > a.without_watermark').attr('href'),
                                    videonowm2: $('div > a.without_watermark_direct').attr('href'),
                                    music: $('div > a.music').attr('href')
@@ -61,36 +60,94 @@ function ssstik(url) {
 }
 
 
-function snaptik(url) {
+// function snaptik(url) {
+//      return new Promise((resolve, reject) => {
+//           Axios.get('https://tiktokdownload.online/', {
+//                headers: {
+//                     'sec-ch-ua': '"Google Chrome";v="89", "Chromium";v="89", ";Not A Brand";v="99"',
+//                     'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36'
+//                }
+//           }).then(({ data }) => {
+//                return console.log(data)
+//                const fd = new FormData()
+//                fd.append('url', url)
+//                Axios({
+//                     url: 'http://snaptik.app/action-2021.php?lang=ID',
+//                     data: fd,
+//                     headers: {
+//                          'Content-Type': `application/x-www-form-urlencoded; charset=UTF-8`,
+//                          'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36',
+//                          'sec-ch-ua': '"Google Chrome";v="89", "Chromium";v="89", ";Not A Brand";v="99"'
+//                     }
+//                }).then(({ data }) => {
+//                     return console.log(data)
+//                     const $ = cheerio.load(data)
+//                     let url = []
+//                     $('div > a.abutton.is-success').get().map(rest => {
+//                          url.push($(rest).attr('href'))
+//                     })
+//                     resolve({ status: true, result: url })
+//                }).catch((e) => reject(e))
+//           })
+//      })
+// }
+
+
+function musicallydown(url) {
      return new Promise((resolve, reject) => {
-          const fd = new FormData()
-          fd.append('url', url)
-          Axios({
-               method: 'POST',
-               url: 'https://snaptik.app/action-2021.php?lang=ID',
-               data: fd,
+          Axios.get('https://musicallydown.com', {
                headers: {
-                    'Content-Type': `multipart/form-data; boundary=${fd._boundary}`
+                    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36',
+                    'cookie': '__cfduid=d1a03c762459f64f87734977f474142fe1618464905; session_data=ac6a59adeffddbf12d71d4d9e368fee9; _ga=GA1.2.1692872429.1618464910; _gid=GA1.2.371863113.1618464910; __atuvc=2%7C15; __atuvs=6077d08d902cbf1a001; __atssc=google%3B2',     
                }
-          }).then(({ data }) => {
+          })
+          .then(({ data }) => {
+               // return console.log(data)
                const $ = cheerio.load(data)
-               let url = []
-               $('div > a.abutton.is-success').get().map(rest => {
-                    url.push($(rest).attr('href'))
+               let keyInput = []
+               $('form > div > div > input').get().map(rest => {
+                    keyInput.push({
+                         name: $(rest).attr('name'),
+                         value: $(rest).attr('value')
+                    })
                })
-               resolve({ status: true, result: url })
-          }).catch((e) => reject({ status: false, message: e.message }))
+               const form = new FormData()
+               form.append(keyInput[0].name, url)
+               form.append(keyInput[1].name, keyInput[1].value)
+               form.append(keyInput[2].name, keyInput[2].value)
+               Axios({
+                    method: 'POST',
+                    url: 'https://musicallydown.com/download',
+                    data: form,
+                    headers: {
+                         'Content-Type': `multipart/form-data; boundary=${form._boundary}`,
+                         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36',
+                         'cookie': '__cfduid=d1a03c762459f64f87734977f474142fe1618464905; session_data=ac6a59adeffddbf12d71d4d9e368fee9; _ga=GA1.2.1692872429.1618464910; _gid=GA1.2.371863113.1618464910; __atuvc=2%7C15; __atuvs=6077d08d902cbf1a001; __atssc=google%3B2',
+                         'origin': 'https://musicallydown.com',
+                         'referer': 'https://musicallydown.com/'
+                    }
+               }).then(({ data }) => {
+                    const result = {
+                         status: true, 
+                         message: 'Created By MRHRTZ',
+                         title: $('div.row > div > h2 > b').text(),
+                         preview: $('div.row > div > h1.cushead.white-text > video#video').attr('poster'), 
+                         download: $('div.row > div > a:nth-child(4)'),
+                         download_direct: $('div.row > div > a:nth-child(5)')
+                    }
+                    resolve(data)
+               })
+          })
      })
 }
 
-
 function keeptiktok(url) {
      return new Promise((resolve, reject) => {
-          Axios.get('https://keeptiktok.com/?lang=ID', { 
+          Axios.get('https://keeptiktok.com/?lang=ID', {
                headers: {
                     'Cookie': '__cfduid=d5db462e7efb9bb76bcf89765dbd896c91617891082; PHPSESSID=5a017bebc34ef170ddec3b7c71a0bbe8; _ga=GA1.2.1193000489.1617891094; _gid=GA1.2.408908588.1617891094; ads=ok; __atuvc=3|14; __atuvs=606f0f171d8ce8a1002; __atssc=google;2'
                }
-           })
+          })
                .then(({ data }) => {
                     const $ = cheerio.load(data)
                     const token = $('input#token').attr('value')
@@ -124,5 +181,5 @@ function keeptiktok(url) {
 }
 
 module.exports.keeptiktok = keeptiktok
-module.exports.snaptik = snaptik
+module.exports.musicallydown = musicallydown
 module.exports.ssstik = ssstik

@@ -1,5 +1,5 @@
-const { snaptik, ssstik, keeptiktok } = require('./src/function')
+const { musicallydown, ssstik, keeptiktok } = require('./src/function')
 
-exports.snaptik = snaptik
+exports.musicallydown = musicallydown
 exports.ssstik = ssstik
 exports.keeptiktok = keeptiktok
