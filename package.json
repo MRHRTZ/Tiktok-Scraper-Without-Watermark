@@ -1,6 +1,6 @@
 {
   "name": "tiktok-scraper-without-watermark",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Tiktok Scraper, Download Video From Tiktok Without Watermark.",
   "main": "index.js",
   "scripts": {
