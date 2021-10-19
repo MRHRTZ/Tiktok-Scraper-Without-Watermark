@@ -21,7 +21,7 @@
 
 ## Install it
 
-``` npm i https://github.com/MRHRTZ/Tiktok-Scraper-Without-Watermark ```
+``` npm i tiktok-scraper-without-watermark ```
 
 ## Usage
 
