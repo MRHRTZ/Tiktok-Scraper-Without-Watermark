@@ -2,7 +2,7 @@ const { default: Axios } = require('axios')
 const cheerio = require('cheerio')
 const qs = require('qs')
 const FormData = require('form-data')
-const qs = require('querystring')
+// const qs = require('querystring')
 
 function ssstik(url) {
      return new Promise((resolve, reject) => {
