@@ -195,7 +195,7 @@ function tiktokdownload(url) {
             // return console.log(cookie);
             Axios({
                 method: 'POST',
-                url: 'https://ttdownloader.com/req/',
+                url: 'https://ttdownloader.com/query/',
                 headers: {
                     'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
                     origin: 'https://ttdownloader.com',
