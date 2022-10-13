@@ -18,11 +18,10 @@ function ssstik(url) {
           })
                .then(({ data }) => {
                     const $ = cheerio.load(data)
-                    const urlPost = $('form[data-hx-target="#target"]').attr('data-hx-post')
-                    const tokenJSON = $('form[data-hx-target="#target"]').attr('include-vals')
+                    const urlPost = $('form[hx-target="#target"]').attr('hx-post')
+                    const tokenJSON = $('form[hx-target="#target"]').attr('include-vals')
                     const tt = tokenJSON.replace(/'/g, '').replace('tt:', '').split(',')[0]
                     const ts = tokenJSON.split('ts:')[1]
-                    // console.log({ pst: urlPost, tt: tt, ts: ts })
                     var config = {
                          headers: {
                               'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
@@ -99,46 +98,46 @@ function musicallydown(url) {
           Axios.get('https://musicallydown.com', {
                headers: {
                     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36',
-                    'cookie': '__cfduid=d1a03c762459f64f87734977f474142fe1618464905; session_data=ac6a59adeffddbf12d71d4d9e368fee9; _ga=GA1.2.1692872429.1618464910; _gid=GA1.2.371863113.1618464910; __atuvc=2%7C15; __atuvs=6077d08d902cbf1a001; __atssc=google%3B2',     
+                    'cookie': '__cfduid=d1a03c762459f64f87734977f474142fe1618464905; session_data=ac6a59adeffddbf12d71d4d9e368fee9; _ga=GA1.2.1692872429.1618464910; _gid=GA1.2.371863113.1618464910; __atuvc=2%7C15; __atuvs=6077d08d902cbf1a001; __atssc=google%3B2',
                }
           })
-          .then(({ data }) => {
-               // return console.log(data)
-               const $ = cheerio.load(data)
-               let keyInput = []
-               $('form > div > div > input').get().map(rest => {
-                    keyInput.push({
-                         name: $(rest).attr('name'),
-                         value: $(rest).attr('value')
+               .then(({ data }) => {
+                    // return console.log(data)
+                    const $ = cheerio.load(data)
+                    let keyInput = []
+                    $('form > div > div > input').get().map(rest => {
+                         keyInput.push({
+                              name: $(rest).attr('name'),
+                              value: $(rest).attr('value')
+                         })
+                    })
+                    const form = new FormData()
+                    form.append(keyInput[0].name, url)
+                    form.append(keyInput[1].name, keyInput[1].value)
+                    form.append(keyInput[2].name, keyInput[2].value)
+                    Axios({
+                         method: 'POST',
+                         url: 'https://musicallydown.com/download',
+                         data: form,
+                         headers: {
+                              'Content-Type': `multipart/form-data; boundary=${form._boundary}`,
+                              'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36',
+                              'cookie': '__cfduid=d1a03c762459f64f87734977f474142fe1618464905; session_data=ac6a59adeffddbf12d71d4d9e368fee9; _ga=GA1.2.1692872429.1618464910; _gid=GA1.2.371863113.1618464910; __atuvc=2%7C15; __atuvs=6077d08d902cbf1a001; __atssc=google%3B2',
+                              'origin': 'https://musicallydown.com',
+                              'referer': 'https://musicallydown.com/'
+                         }
+                    }).then(({ data }) => {
+                         const result = {
+                              status: true,
+                              message: 'Created By MRHRTZ',
+                              title: $('div.row > div > h2 > b').text(),
+                              preview: $('div.row > div > h1.cushead.white-text > video#video').attr('poster'),
+                              download: $('div.row > div > a:nth-child(4)'),
+                              download_direct: $('div.row > div > a:nth-child(5)')
+                         }
+                         resolve(data)
                     })
                })
-               const form = new FormData()
-               form.append(keyInput[0].name, url)
-               form.append(keyInput[1].name, keyInput[1].value)
-               form.append(keyInput[2].name, keyInput[2].value)
-               Axios({
-                    method: 'POST',
-                    url: 'https://musicallydown.com/download',
-                    data: form,
-                    headers: {
-                         'Content-Type': `multipart/form-data; boundary=${form._boundary}`,
-                         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36',
-                         'cookie': '__cfduid=d1a03c762459f64f87734977f474142fe1618464905; session_data=ac6a59adeffddbf12d71d4d9e368fee9; _ga=GA1.2.1692872429.1618464910; _gid=GA1.2.371863113.1618464910; __atuvc=2%7C15; __atuvs=6077d08d902cbf1a001; __atssc=google%3B2',
-                         'origin': 'https://musicallydown.com',
-                         'referer': 'https://musicallydown.com/'
-                    }
-               }).then(({ data }) => {
-                    const result = {
-                         status: true, 
-                         message: 'Created By MRHRTZ',
-                         title: $('div.row > div > h2 > b').text(),
-                         preview: $('div.row > div > h1.cushead.white-text > video#video').attr('poster'), 
-                         download: $('div.row > div > a:nth-child(4)'),
-                         download_direct: $('div.row > div > a:nth-child(5)')
-                    }
-                    resolve(data)
-               })
-          })
      })
 }
 
@@ -182,44 +181,44 @@ function keeptiktok(url) {
 }
 
 function tiktokdownload(url) {
-    return new Promise((resolve, reject) => {
-        Axios.get('https://ttdownloader.com/')
-        .then((data) => {
-            const $ = cheerio.load(data.data)
-            const cookie = data.headers['set-cookie'].join('')
-            const dataPost = {
-                url: url,
-                format: '', 
-                token: $('#token').attr('value')
-            }
-            // return console.log(cookie);
-            Axios({
-                method: 'POST',
-                url: 'https://ttdownloader.com/req/',
-                headers: {
-                    'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
-                    origin: 'https://ttdownloader.com',
-                    referer: 'https://ttdownloader.com/',
-                    cookie: cookie,
-                },
-                data: qs.stringify(dataPost)
-            }).then(({ data }) => {
-                const $ = cheerio.load(data)
-                const result = {
-                    nowm: $('#results-list > div:nth-child(2) > div.download > a')?.attr('href'),
-                    wm: $('#results-list > div:nth-child(3) > div.download > a')?.attr('href'),
-                    audio: $('#results-list > div:nth-child(4) > div.download > a').attr('href')
-                }
-                resolve(result);
-            })
-            .catch(e => {
-                reject({ status: false, message: 'error fetch data', e: e.message })
-            })
-        })
-        .catch(e => {
-            reject({ status: false, message: 'error fetch data', e: e.message })
-        })
-    })
+     return new Promise((resolve, reject) => {
+          Axios.get('https://ttdownloader.com/')
+               .then((data) => {
+                    const $ = cheerio.load(data.data)
+                    const cookie = data.headers['set-cookie'].join('')
+                    const dataPost = {
+                         url: url,
+                         format: '',
+                         token: $('#token').attr('value')
+                    }
+                    // return console.log(cookie);
+                    Axios({
+                         method: 'POST',
+                         url: 'https://ttdownloader.com/search/',
+                         headers: {
+                              'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                              origin: 'https://ttdownloader.com',
+                              referer: 'https://ttdownloader.com/',
+                              cookie
+                         },
+                         data: qs.stringify(dataPost)
+                    }).then(({ data }) => {
+                         const $ = cheerio.load(data)
+                         const result = {
+                              nowm: $('#results-list > div:nth-child(2) > div.download > a')?.attr('href'),
+                              wm: $('#results-list > div:nth-child(3) > div.download > a')?.attr('href'),
+                              audio: $('#results-list > div:nth-child(4) > div.download > a').attr('href')
+                         }
+                         resolve(result);
+                    })
+                         .catch(e => {
+                              reject({ status: false, message: 'error fetch data', e: e.message })
+                         })
+               })
+               .catch(e => {
+                    reject({ status: false, message: 'error fetch data', e: e.message })
+               })
+     })
 }
 
 module.exports.keeptiktok = keeptiktok

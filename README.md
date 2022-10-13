@@ -1,4 +1,4 @@
-﻿<p align="center">
+<p align="center">
 <img src="https://raw.githubusercontent.com/MRHRTZ/Tiktok-Scraper-Without-Watermark/main/src/media/ttk.webp" width="128" height="128"/>
 </p>
 <p align="center">
