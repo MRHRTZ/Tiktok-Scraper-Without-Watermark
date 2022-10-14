@@ -19,9 +19,12 @@
 ## Required
 - Nodejs ( <a href="https://nodejs.org/en/download">download here</a> )
 
-## Install it
+## Installation
 
-``` npm i tiktok-scraper-without-watermark ```
+- git clone https://github.com/MRHRTZ/Tiktok-Scraper-Without-Watermark
+- cd Tiktok-Scraper-Without-Watermark
+- npm i
+- node example.js
 
 ## Usage
 
