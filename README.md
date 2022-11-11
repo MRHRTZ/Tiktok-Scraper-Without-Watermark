@@ -26,6 +26,10 @@
 - npm i
 - node example.js
 
+### Install for your project
+
+- npm i https://github.com/MRHRTZ/Tiktok-Scraper-Without-Watermark
+
 ## Usage
 
 ```
