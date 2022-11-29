@@ -233,8 +233,27 @@ function tiklydown(url) {
      })
 }
 
+function dlpanda(url) {
+     return new Promise((resolve, reject) => {
+          Axios.get(`https://dlpanda.com/?url=${url}`)
+               .then(({ data }) => {
+                    const $ = cheerio.load(data)
+                    let images = []
+                    $('div.card-body.row > div').get().map(rest => {
+                         var image = $(rest).find('img').attr('src')
+                         if (image) images.push(image)
+                    })
+                    resolve(images)
+               })
+               .catch(e => {
+                    reject(e)
+               })
+     })
+}
+
 module.exports.keeptiktok = keeptiktok
 module.exports.musicallydown = musicallydown
 module.exports.ssstik = ssstik
 module.exports.tiktokdownload = tiktokdownload
 module.exports.tiklydown = tiklydown
+module.exports.dlpanda = dlpanda

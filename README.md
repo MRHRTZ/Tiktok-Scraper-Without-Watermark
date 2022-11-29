@@ -17,6 +17,7 @@
 # Tiktok-Scraper-Without-Watermark
 
 ## Required
+
 - Nodejs ( <a href="https://nodejs.org/en/download">download here</a> )
 
 ## Installation
@@ -32,19 +33,21 @@
 
 ## Usage
 
-```js
-const tiktok = require('tiktok-scraper-without-watermark')
-const url = 'https://www.tiktok.com/@youneszarou/video/6942436555692805381'
+```javascript
+const tiktok = require("tiktok-scraper-without-watermark");
+const url = "https://www.tiktok.com/@youneszarou/video/6942436555692805381";
 
-
-tiktok.tiklydown(url)
-     .then(result => {
-          console.log(result)
-     })
-     .catch(e => console.log(e))
+tiktok
+  .tiklydown(url)
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((e) => console.log(e));
 ```
 
 ## Response Example
+
+### Normal Video
 
 ```javascript
 {
@@ -90,4 +93,18 @@ tiktok.tiklydown(url)
     avatar_thumb: 'https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/beb1b3a7b0e17398b9c2cb6556f2ef7c~c5_100x100.webp?x-expires=1669791600&x-signature=%2Bw3ZrU%2BM70kXaz0Iml5yCXMSVTk%3D'
   }
 }
+```
+
+### Slider Image
+
+```javascript
+[
+  "https://p16-sign-va.tiktokcdn.com/tos-useast2a-i-photomode-aiso/ea2e14be45234152b1856cb8694ed844~tplv-photomode-image.jpeg?from=photomode.FEED&x-expires=1671004800&x-signature=FBwSEHipXEq5QfuMwJfySJZDWLg%3D",
+  "https://p16-sign-va.tiktokcdn.com/tos-useast2a-i-photomode-aiso/5b0d54da38404d5593d21c6764803afd~tplv-photomode-image.jpeg?from=photomode.FEED&x-expires=1671004800&x-signature=66EdFpXAAcdLUHfYq%2B8l6bjvAzU%3D",
+  "https://p16-sign-va.tiktokcdn.com/tos-useast2a-i-photomode-aiso/de7df02cf2394004822670e59b2d0ac9~tplv-photomode-image.jpeg?from=photomode.FEED&x-expires=1671004800&x-signature=rLV5QA2lfjr32HOedFnwitPAB68%3D",
+  "https://p16-sign-va.tiktokcdn.com/tos-useast2a-i-photomode-aiso/15678d60477d4d8fb064de71d4a15e23~tplv-photomode-image.jpeg?from=photomode.FEED&x-expires=1671004800&x-signature=te1ehE5aAejY6mPOcjz94IBjzmI%3D",
+  "https://p16-sign-va.tiktokcdn.com/tos-useast2a-i-photomode-aiso/27a9a5e958714674b8f7f8dc299aa158~tplv-photomode-image.jpeg?from=photomode.FEED&x-expires=1671004800&x-signature=aPVuWPP%2B%2BpzAQH6bID9l1IC6LaA%3D",
+  "https://p16-sign-va.tiktokcdn.com/tos-useast2a-i-photomode-aiso/7296873447944a4e8b138b1be4fa62be~tplv-photomode-image.jpeg?from=photomode.FEED&x-expires=1671004800&x-signature=iK1G%2B2uA77zW7vYvE7mGJc1DJzc%3D",
+  "https://p16-sign-va.tiktokcdn.com/tos-useast2a-i-photomode-aiso/24b586cc7b784a178bad074d98827153~tplv-photomode-image.jpeg?from=photomode.FEED&x-expires=1671004800&x-signature=AC8nXsL7cJ8CPc%2Fe6F9Qg7V8Q%2FA%3D",
+]
 ```
