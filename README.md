@@ -34,7 +34,7 @@
 ## Usage
 
 ```javascript
-const tiktok = require(".");
+const tiktok = require("tiktok-scraper-without-watermark");
 const url = "https://www.tiktok.com/@ads.who/video/7152104100639870234";
 const slider_url = "https://vt.tiktok.com/ZS8e1HeEs/";
 
