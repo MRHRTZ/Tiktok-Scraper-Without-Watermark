@@ -221,7 +221,20 @@ function tiktokdownload(url) {
      })
 }
 
+function tiklydown(url) {
+     return new Promise((resolve, reject) => {
+          Axios.get(`https://developers.tiklydown.me/api/download?url=${url}`)
+               .then(({ data }) => {
+                    resolve(data)
+               })
+               .catch(e => {
+                    reject(e)
+               })
+     })
+}
+
 module.exports.keeptiktok = keeptiktok
 module.exports.musicallydown = musicallydown
 module.exports.ssstik = ssstik
 module.exports.tiktokdownload = tiktokdownload
+module.exports.tiklydown = tiklydown
