@@ -114,5 +114,5 @@ tiktok
   "https://p16-sign-va.tiktokcdn.com/tos-useast2a-i-photomode-aiso/27a9a5e958714674b8f7f8dc299aa158~tplv-photomode-image.jpeg?from=photomode.FEED&x-expires=1671004800&x-signature=aPVuWPP%2B%2BpzAQH6bID9l1IC6LaA%3D",
   "https://p16-sign-va.tiktokcdn.com/tos-useast2a-i-photomode-aiso/7296873447944a4e8b138b1be4fa62be~tplv-photomode-image.jpeg?from=photomode.FEED&x-expires=1671004800&x-signature=iK1G%2B2uA77zW7vYvE7mGJc1DJzc%3D",
   "https://p16-sign-va.tiktokcdn.com/tos-useast2a-i-photomode-aiso/24b586cc7b784a178bad074d98827153~tplv-photomode-image.jpeg?from=photomode.FEED&x-expires=1671004800&x-signature=AC8nXsL7cJ8CPc%2Fe6F9Qg7V8Q%2FA%3D",
-];
+]
 ```
