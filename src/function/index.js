@@ -223,7 +223,7 @@ function tiktokdownload(url) {
 
 function tiklydown(url) {
      return new Promise((resolve, reject) => {
-          Axios.get(`https://developers.tiklydown.me/api/download?url=${url}`)
+          Axios.get(`https://api.tiklydown.eu.org/api/download?url=${url}`)
                .then(({ data }) => {
                     resolve(data)
                })
