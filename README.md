@@ -35,22 +35,26 @@
 
 ```javascript
 const tiktok = require("tiktok-scraper-without-watermark");
-const url = "https://www.tiktok.com/@ads.who/video/7152104100639870234";
-const slider_url = "https://vt.tiktok.com/ZS8e1HeEs/";
+const url = 'https://www.tiktok.com/@ads.who/video/7152104100639870234'
 
-tiktok
-  .tiklydown(url)
-  .then((result) => {
-    console.log(result);
+tiktok.tiklydown(url)
+  .then(result => {
+      console.log(result)
   })
-  .catch((e) => console.log(e));
+  .catch(e => console.log(e))
 
-tiktok
-  .dlpanda(slider_url)
-  .then((result) => {
-    console.log(result);
+tiktok.tiktokdownload(url)
+  .then(result => {
+      console.log(result)
   })
-  .catch((e) => console.log(e));
+  .catch(e => console.log(e))
+  
+tiktok.dlpanda(url)
+  .then(result => {
+      console.log(result)
+  })
+  .catch(e => console.log(e))
+
 ```
 
 ## Response Example
@@ -102,12 +106,21 @@ tiktok
   }
 }
 ```
+### TTDownloader
+
+```javascript
+{
+  nowm: 'https://ttdownloader.com/dl.php?v=YTo0OntzOjk6IndhdGVybWFyayI7YjowO3M6NzoidmlkZW9JZCI7czozMjoiZGYxMzdiOWRmNWIyZGY5YjFhNjgzNGU3YTk3NGRjMGMiO3M6MzoidWlkIjtzOjMyOiIwYmE4NTkzNDc4NTVhNDVlNjgzNGM3ZDk0NjQ3Y2RhOSI7czo0OiJ0aW1lIjtpOjE3MDczMDk2Mjg7fQ==',
+  wm: 'https://ttdownloader.com/dl.php?v=YTo0OntzOjk6IndhdGVybWFyayI7YjoxO3M6NzoidmlkZW9JZCI7czozMjoiZGYxMzdiOWRmNWIyZGY5YjFhNjgzNGU3YTk3NGRjMGMiO3M6MzoidWlkIjtzOjMyOiIwYmE4NTkzNDc4NTVhNDVlNjgzNGM3ZDk0NjQ3Y2RhOSI7czo0OiJ0aW1lIjtpOjE3MDczMDk2Mjg7fQ==',
+  audio: 'https://ttdownloader.com/mp3.php?v=YTozOntzOjc6InZpZGVvSWQiO3M6MzI6ImRmMTM3YjlkZjViMmRmOWIxYTY4MzRlN2E5NzRkYzBjIjtzOjM6InVpZCI7czozMjoiMGJhODU5MzQ3ODU1YTQ1ZTY4MzRjN2Q5NDY0N2NkYTkiO3M6NDoidGltZSI7aToxNzA3MzA5NjI4O30='
+}
+```
 
 ### DLPanda
 
 ```javascript
 {
-  video: '//v16m-default.akamaized.net/b6cc60fcaa6b456134515048d436ceac/65c3cc74/video/tos/useast2a/tos-useast2a-ve-0068c001/oYAYZNBBzXRSyE3BM0EPAqM7iQUsoDQjydiKI/?a=0&amp;ch=0&amp;cr=0&amp;dr=0&amp;lr=all&amp;cd=0%7C0%7C0%7C0&amp;cv=1&amp;br=1812&amp;bt=906&amp;bti=OHYpOTY0Zik3OjlmOm01MzE6ZDQ0MDo%3D&amp;cs=0&amp;ds=6&amp;ft=XE5bCqT0mmjPD125XGmR3wUgPIMtMeF~O5&amp;mime_type=video_mp4&amp;qs=0&amp;rc=Z2hnNTk3NDhlaGQ1Zjk7ZUBpM21rcXU5cjNtcDMzNzczM0AwYDUzMi1eXl8xMy9gMC9jYSMyYzYuMmQ0MTNgLS1kMTZzcw%3D%3D&amp;l=202402071230571E29CD87463423A9CB17&amp;btag=e00088000',
-  audio: 'https://sf16-ies-music-va.tiktokcdn.com/obj/musically-maliva-obj/7316898531014118150.mp3'
+  video: '//v16m-default.akamaized.net/7232db4c7d65efbfb6a08b3d49eba236/65c3cfb3/video/tos/useast2a/tos-useast2a-pve-0037-aiso/94367a4561f1468e90e03d360ed671d3/?a=0&amp;ch=0&amp;cr=0&amp;dr=0&amp;lr=all&amp;cd=0%7C0%7C0%7C0&amp;cv=1&amp;br=2818&amp;bt=1409&amp;bti=OHYpOTY0Zik3OjlmOm01MzE6ZDQ0MDo%3D&amp;cs=0&amp;ds=6&amp;ft=XE5bCqT0mmjPD12OsGmR3wUgPIMtMeF~O5&amp;mime_type=video_mp4&amp;qs=0&amp;rc=Ojk5Zzo6N2VmZzlkNDQ0NUBpM3M1bTw6ZjhwZzMzZjgzM0AzLi01YDUxNjAxMTIwNDFhYSMzYXIwcjRnLi1gLS1kL2Nzcw%3D%3D&amp;l=2024020712445479F6F78212B0AEAE20E1&amp;btag=e00088000',
+  audio: 'https://sf16-ies-music.tiktokcdn.com/obj/ies-music-aiso/7152108529230547739.mp3'
 }
 ```
