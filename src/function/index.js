@@ -2,6 +2,7 @@ const { default: Axios } = require('axios')
 const cheerio = require('cheerio')
 const qs = require('qs')
 const FormData = require('form-data')
+const fs = require('fs')
 // const qs = require('querystring')
 
 function ssstik(url) {
@@ -235,15 +236,31 @@ function tiklydown(url) {
 
 function dlpanda(url) {
      return new Promise((resolve, reject) => {
-          Axios.get(`https://dlpanda.com/?url=${url}`)
+          Axios.get('https://dlpanda.com/id')
                .then(({ data }) => {
-                    const $ = cheerio.load(data)
-                    let images = []
-                    $('div.card-body.row > div').get().map(rest => {
-                         var image = $(rest).find('img').attr('src')
-                         if (image) images.push(image)
-                    })
-                    resolve(images)
+                    const $$ = cheerio.load(data)
+                    const token = $$('#token').attr('value')
+
+                    Axios.get(`https://dlpanda.com/id?url=${url}&token=${token}`)
+                         .then(({ data }) => {
+                              const $ = cheerio.load(data)
+                              if (data.match(/downVideo\(\'(.*?)\'/)) {
+                                   const scriptDownload = data.match(/downVideo\(\'(.*?)\'/g)
+                                   const video = scriptDownload[0].match(/downVideo\(\'(.*?)\'/)[1]
+                                   const audio = scriptDownload[1].match(/downVideo\(\'(.*?)\'/)[1]
+                                   resolve({ video, audio })
+                              } else {
+                                   let images = []
+                                   $('div.card-body.row > div').get().map(rest => {
+                                        var image = $(rest).find('img').attr('src')
+                                        if (image) images.push(image)
+                                   })
+                                   resolve(images)
+                              }
+                         })
+                         .catch(e => {
+                              reject(e)
+                         })
                })
                .catch(e => {
                     reject(e)

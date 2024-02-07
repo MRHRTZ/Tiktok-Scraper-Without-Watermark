@@ -55,7 +55,7 @@ tiktok
 
 ## Response Example
 
-### Normal Video
+### TiklyDown
 
 ```javascript
 {
@@ -103,16 +103,11 @@ tiktok
 }
 ```
 
-### Slider Image
+### DLPanda
 
 ```javascript
-[
-  "https://p16-sign-va.tiktokcdn.com/tos-useast2a-i-photomode-aiso/ea2e14be45234152b1856cb8694ed844~tplv-photomode-image.jpeg?from=photomode.FEED&x-expires=1671004800&x-signature=FBwSEHipXEq5QfuMwJfySJZDWLg%3D",
-  "https://p16-sign-va.tiktokcdn.com/tos-useast2a-i-photomode-aiso/5b0d54da38404d5593d21c6764803afd~tplv-photomode-image.jpeg?from=photomode.FEED&x-expires=1671004800&x-signature=66EdFpXAAcdLUHfYq%2B8l6bjvAzU%3D",
-  "https://p16-sign-va.tiktokcdn.com/tos-useast2a-i-photomode-aiso/de7df02cf2394004822670e59b2d0ac9~tplv-photomode-image.jpeg?from=photomode.FEED&x-expires=1671004800&x-signature=rLV5QA2lfjr32HOedFnwitPAB68%3D",
-  "https://p16-sign-va.tiktokcdn.com/tos-useast2a-i-photomode-aiso/15678d60477d4d8fb064de71d4a15e23~tplv-photomode-image.jpeg?from=photomode.FEED&x-expires=1671004800&x-signature=te1ehE5aAejY6mPOcjz94IBjzmI%3D",
-  "https://p16-sign-va.tiktokcdn.com/tos-useast2a-i-photomode-aiso/27a9a5e958714674b8f7f8dc299aa158~tplv-photomode-image.jpeg?from=photomode.FEED&x-expires=1671004800&x-signature=aPVuWPP%2B%2BpzAQH6bID9l1IC6LaA%3D",
-  "https://p16-sign-va.tiktokcdn.com/tos-useast2a-i-photomode-aiso/7296873447944a4e8b138b1be4fa62be~tplv-photomode-image.jpeg?from=photomode.FEED&x-expires=1671004800&x-signature=iK1G%2B2uA77zW7vYvE7mGJc1DJzc%3D",
-  "https://p16-sign-va.tiktokcdn.com/tos-useast2a-i-photomode-aiso/24b586cc7b784a178bad074d98827153~tplv-photomode-image.jpeg?from=photomode.FEED&x-expires=1671004800&x-signature=AC8nXsL7cJ8CPc%2Fe6F9Qg7V8Q%2FA%3D",
-]
+{
+  video: '//v16m-default.akamaized.net/b6cc60fcaa6b456134515048d436ceac/65c3cc74/video/tos/useast2a/tos-useast2a-ve-0068c001/oYAYZNBBzXRSyE3BM0EPAqM7iQUsoDQjydiKI/?a=0&amp;ch=0&amp;cr=0&amp;dr=0&amp;lr=all&amp;cd=0%7C0%7C0%7C0&amp;cv=1&amp;br=1812&amp;bt=906&amp;bti=OHYpOTY0Zik3OjlmOm01MzE6ZDQ0MDo%3D&amp;cs=0&amp;ds=6&amp;ft=XE5bCqT0mmjPD125XGmR3wUgPIMtMeF~O5&amp;mime_type=video_mp4&amp;qs=0&amp;rc=Z2hnNTk3NDhlaGQ1Zjk7ZUBpM21rcXU5cjNtcDMzNzczM0AwYDUzMi1eXl8xMy9gMC9jYSMyYzYuMmQ0MTNgLS1kMTZzcw%3D%3D&amp;l=202402071230571E29CD87463423A9CB17&amp;btag=e00088000',
+  audio: 'https://sf16-ies-music-va.tiktokcdn.com/obj/musically-maliva-obj/7316898531014118150.mp3'
+}
 ```
